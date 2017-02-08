@@ -1,2 +1,3 @@
 # LitRater
-2011 PHP driven website for short stories
+2011 PHP and Javascript driven website for collecting short stories
+
