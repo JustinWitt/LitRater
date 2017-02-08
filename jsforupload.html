@@ -1,0 +1,81 @@
+
+<script type="text/javascript">
+var numberofauthors = 1;
+function validateForm()
+{
+//first, prevent blanks for the moment
+var titlecheck=checkTitle();
+var authorstring=createAuthorString();
+var filestring=document.forms["filesubmit"]["ufile"].value;
+if(filestring == "")
+	{
+	document.getElementById("filearea").innerHTML="<td style=\"color:red\"\;>Please add a file to upload</td>";	
+	}
+if(titlecheck==false || authorstring=="" || filestring ==null || filestring=="")
+	{
+	alert("you left something blank");
+	return false;
+	}
+var toreturn = titlecheck + ">" + authorstring + ">";
+return toreturn;
+}
+
+function checkTitle()
+{
+var titlestring=document.forms["filesubmit"]["title"].value;
+//need to check length of title, if more than 30 words, kill it
+if(titlestring.length > 300)
+	{
+	document.getElementById("titlefield").innerHTML="<td style=\"color:red\"\;>Please Enter a Shorter Title</td>";
+	return false;
+	}
+if(titlestring.length==0)
+	{
+	document.getElementById("titlefield").innerHTML="<td style=\"color:red\"\;>Please Enter in a Title</td>";	
+	return false;
+	}
+return true;
+}
+
+
+function addMore(timescalled)
+{
+numberofauthors++;
+timescalled++;
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+
+xmlhttp.onreadystatechange=function()
+  {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+    var wheretogo = "moreauthors" + timescalled;
+    document.getElementById(wheretogo).innerHTML=xmlhttp.responseText;
+    }
+  }
+
+xmlhttp.open("GET","addauthor.php?timescalled="+timescalled,true);
+xmlhttp.send();
+}
+
+function checkAuthor()
+{
+//check to see if fields in 1 are blank and return a null string if they are
+var tempfirstname = document.getElementById("firstname1").value;
+var tempmiddlename = document.getElementById("middlename1").value;
+var templastname = document.getElementById("lastname1").value;
+if(tempfirstname == "" && tempmiddlename == "" && templastname == "")
+	{
+	document.getElementById("authorfield").innerHTML="<td style=\"color:red\"\;>Please Enter a Last Name</td>";
+	return "";
+	}
+return true;
+}
+
+</script>

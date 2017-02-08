@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<title>LitRater: An archive of short stories for e-devices</title>
+
+<style type="text/css">
+
+logo
+{
+width:100%;
+height:75px;
+background-color:#A7C9AE;
+}
+
+
+navigationbar
+{
+width:100%;
+height:5%;
+background-color:#dddddd;
+}
+
+ul
+{
+list-style-type:none;
+margin:0;
+padding:0;
+}
+li
+{
+float:right;
+width:100px;
+display:block;
+background-color:#dddddd;
+}
+a
+{
+text-decoration:none;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<div id="logo">
+<img src="logo1.png" alt="LitRater: An archive of short stories for e-devices"/>
+</div>
+<div id="navigationbar">
+<div id="ul">
+<ul>
+<li><a href="#home">Sign-In/Register</a></li>
+<li><a href="#news">News</a></li>
+<li><a href="#contact">Contact</a></li>
+<li><a href="#about">About</a></li>
+</ul>
+</div>
+</div>
+
+<p>
+</p>
+<div id="leftsidebar">
+<form action="lrsearch.php" method="GET">
+<p id="past">Search by Author
+</p>
+<p><input type="text" name="authorsearch" id="authorsearch"/>
+</p>
+<br/>
+<p>Search by Title
+</p>
+<p><input type="text" name="titlesearch" id="titlesearch"/>
+</p>
+<br/>
+<p>Search by Keyword
+</p>
+<p>
+<input type="text" name="keywordsearch" id="keywordsearch"/>
+</p>
+<p>
+<input type="submit" value="Submit"/>
+</p>
+</form>
+</div>
+
+<div id="rightsidebar">
+<form action="testphp.php" method="post">
+<p>User Name
+</p>
+<p><input type="text" name="username"/>
+</p>
+<p>Password
+</p>
+<p><input type="password" name="password"/>
+</p>
+<p>
+<input type="submit" value="Submit"/>
+</p>
+</form>
+</div>
+
+<div id="maincontent">
+Top Ten Short Stories (By Rating)
+</div>
+
+</body>
+</html>

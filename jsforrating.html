@@ -1,0 +1,162 @@
+<script type="text/javascript">
+var some_image = new Image();
+some_image.src = "filledstar.png";
+some_image.src = "blankstar.png";
+var starset = ["0"];
+
+//functions returns which # it is set to for that lrid
+function isStarset(lrid)
+{
+var starthing1 = "s1" + lrid;
+var starthing2 = "s2" + lrid;
+var starthing3 = "s3" + lrid;
+var starthing4 = "s4" + lrid;
+var starthing5 = "s5" + lrid;
+var starsetlength=starset.length;
+for(i=0;i<starsetlength;i++)
+       {
+	if(starset[i]==starthing1)
+	{
+		return "s1";
+	}
+	if(starset[i]==starthing2)
+	{
+		return "s2";
+	}
+	if(starset[i]==starthing3)
+	{
+		return "s3";
+	}
+	if (starset[i]==starthing4)
+	{
+		return "s4";
+	}
+	if (starset[i]==starthing5)
+	{
+		return "s5";
+	}
+       }
+return 0;
+}
+
+
+function fillStars(starnum,lrid,starrating)
+{
+	var starinsert1="star1" + lrid;
+	var starinsert2="star2" + lrid;
+	var starinsert3="star3" + lrid;
+	var starinsert4="star4" + lrid;
+	var starinsert5="star5" + lrid;
+if(starrating)
+{
+	if(starrating != "s0")
+	{
+	var settler = starrating + lrid;
+	starset.push(settler);
+	}
+}
+
+switch(starnum){
+	case 's5':
+	window.document.getElementById(starinsert1).src="filledstar.png";
+	window.document.getElementById(starinsert2).src="filledstar.png";
+	window.document.getElementById(starinsert3).src="filledstar.png";
+	window.document.getElementById(starinsert4).src="filledstar.png";
+	window.document.getElementById(starinsert5).src="filledstar.png";
+	break;
+	case 's4':
+	window.document.getElementById(starinsert1).src="filledstar.png";
+	window.document.getElementById(starinsert2).src="filledstar.png";
+	window.document.getElementById(starinsert3).src="filledstar.png";
+	window.document.getElementById(starinsert4).src="filledstar.png";
+	break;
+	case 's3':
+	window.document.getElementById(starinsert1).src="filledstar.png";
+	window.document.getElementById(starinsert2).src="filledstar.png";
+	window.document.getElementById(starinsert3).src="filledstar.png";
+	break;
+	case 's2':
+	window.document.getElementById(starinsert1).src="filledstar.png";
+	window.document.getElementById(starinsert2).src="filledstar.png";
+	break;
+	default:	
+	window.document.getElementById(starinsert1).src="filledstar.png";
+	}
+}
+
+function clearStars(starnum, lrid)
+{
+	var starinsert1="star1" + lrid;
+	var starinsert2="star2" + lrid;
+	var starinsert3="star3" + lrid;
+	var starinsert4="star4" + lrid;
+	var starinsert5="star5" + lrid;
+	window.document.getElementById(starinsert1).src="blankstar.png";
+	window.document.getElementById(starinsert2).src="blankstar.png";
+	window.document.getElementById(starinsert3).src="blankstar.png";
+	window.document.getElementById(starinsert4).src="blankstar.png";
+	window.document.getElementById(starinsert5).src="blankstar.png";
+var starisset = isStarset(lrid);
+if(starisset)
+	{
+	fillStars(starisset, lrid);
+	}
+}
+
+function prepInfo(starnum,lrid,unum)
+{
+strtoreturn= "usernum=" + unum + "&lrid=" + lrid + "&rating=" + starnum;
+return strtoreturn;
+}
+
+function resetStars(lrid)
+{
+var starisset = isStarset(lrid);
+if(starisset)
+	{
+	var starthing = starisset + lrid;
+	var starsetlength=starset.length;
+	for(i=0;i<starsetlength;i++)
+		{
+		if(starthing==starset[i])
+			starset[i]=0;
+		}
+	}
+}
+
+function starClick(starnum,lrid,unum)
+{
+resetStars(lrid);
+var settler = starnum + lrid;
+starset.push(settler);
+clearStars(starnum,lrid);
+var rating=starnum.slice(1);
+var whatever="usernum=" + unum + "&lrid=" + lrid + "&rating=" + rating;
+insertRating(whatever);
+}
+
+function insertRating(preppedinfo)
+{
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.open("GET","lrrateinsert.php?"+preppedinfo,true);
+xmlhttp.send();
+
+xmlhttp.onreadystatechange=function()
+  {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+    document.getElementById("confirm").innerHTML=xmlhttp.responseText;
+    }
+  }
+}
+
+
+</script>
+

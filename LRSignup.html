@@ -1,0 +1,87 @@
+
+
+<div id="maincontentnowid">
+<p>
+<br/>
+<br/>
+</p>
+<form action="lrsignup.php" method="post">
+<table>
+<tr>
+<th colspan="5">
+Please enter the following information:
+</th>
+</tr>
+<tr align="center">
+<td>Title</td>
+<td>First Name</td>
+<td>Middle Name</td>
+<td>Last Name</td>
+<td>Suffix</td>
+</tr>
+<tr>
+<td>
+<select name="prefix" id="prefix">
+	<option value="">--</option>
+	<option value="Mr.">Mr.</option>
+	<option value="Ms.">Ms.</option>
+	<option value="Mrs.">Mrs.</option>
+	<option value="Dr.">Dr.</option>
+	<option value="Sir.">Sir</option>
+</select>
+</td>
+<td><input type="text" name="firstname" id="firstname"/></td>
+<td><input type="text" name="middlename" id="middlename"/></td>
+<td><input type="text" name="lastname" id="lastname"/></td>
+<td>
+<select name="suffix" id="suffix">
+	<option value="">--</option>
+	<option value="Sr.">Sr.</option>
+	<option value="Jr.">Jr.</option>
+	<option value="M.A.">M.A.</option>
+	<option value="esq.">Esq.</option>
+	<option value="M.D.">M.D.</option>
+	<option value="Ph.D">Ph.D</option>
+</select>
+</td>
+</tr>
+</table>
+<br/>
+<br/>
+
+<table {style width=100%}>
+<tr>
+<th colspan="4">
+Please enter in your email and the user ID you'd like to use
+</th>
+</tr>
+<tr>
+<td>email address: </td>
+<td>
+<input type="text" name="emailadd" id="emailadd"/>
+</td>
+<td>
+preferred user ID:
+</td>
+<td>
+<input type="text" name="lruser" id="lruser"/>
+</td>
+</tr>
+<tr><td><br/></td></tr>
+<tr>
+<th colspan="4">
+Please enter in your password twice to ensure accuracy
+</th>
+</tr>
+<tr>
+<td>password:</td>
+<td><input type="password" name="lrpassword1" id="lrpassword1"/></td>
+<td>password:</td>
+<td><input type="password" name="lrpassword2" id="lrpassword2"/></td>
+</tr>
+</table>
+<p>
+<input type="submit" value="Submit"/>
+</p>
+</form>
+</div>

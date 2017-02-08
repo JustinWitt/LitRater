@@ -1,0 +1,383 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<title>LitRater: An archive of short stories for e-devices</title>
+
+<style type="text/css">
+
+#logo
+{
+width:100%;
+height:75px;
+background-color:#A7C9AE;
+}
+
+#navigationbar{
+background-color:#dddddd;
+height:20px;
+}
+
+ul{
+list-style-type:none;
+margin:0;
+padding:0;
+}
+
+li{
+margin:0;
+padding:0;
+float:right;
+display:inline-block;
+width:12%;
+font-weight:bold;
+}
+
+a.menu{
+color:#000000;
+text-decoration: none;
+}
+
+a.first{
+text-decoration: none;
+margin-left:50%
+}
+
+a.prev{
+text-decoration: none;
+margin-left:25%;
+}
+
+a.next{
+text-decoration: none;
+float:right;
+}
+
+img.logoimg{
+float:left;
+}
+
+#leftsidebar{
+top:100px;
+margin-left:20px;
+padding:0;
+postion: absolute;
+width: 175px;
+height: 400px;
+border-right:1px solid black;
+}
+
+#maincontent{
+position: absolute;
+width: 400px;
+top: 100px;
+margin-left:210px;
+}
+
+
+#rightsidebar{
+top: 119px;
+position: absolute;
+padding-left:1em;
+width:150px;
+left: 77%;
+height: 400px;
+border-left:1px solid black;
+}
+
+#welcome1{
+padding-top:50px;
+padding-right:10px;
+float:right;
+font-size:10px;
+}
+
+#welcome2{
+padding-top:55px;
+padding-right:10px;
+float:right;
+font-size:11px;
+}
+
+
+.loginarea{
+padding-top:3em;
+padding-right:2em;
+float:right;
+}
+
+.smallertext{
+font-size:10px;
+width:5em;
+}
+
+td.searchnum{
+font-size:15px;
+padding-right:20px;
+vertical-align:top;
+}
+
+
+td.searchauthor{
+padding:0px;
+text-indent:10px;
+}
+
+#searchresult{
+float:left;
+font-size:20px;
+}
+</style>
+<script type="text/javascript">
+var some_image = new Image();
+some_image.src = "filledstar.png";
+some_image.src = "blankstar.png";
+var starset = ["0"];
+
+//functions returns which # it is set to for that lrid
+function isStarset(lrid)
+{
+var starthing1 = "s1" + lrid;
+var starthing2 = "s2" + lrid;
+var starthing3 = "s3" + lrid;
+var starthing4 = "s4" + lrid;
+var starthing5 = "s5" + lrid;
+var starsetlength=starset.length;
+for(i=0;i<starsetlength;i++)
+       {
+	if(starset[i]==starthing1)
+	{
+		return "s1";
+	}
+	if(starset[i]==starthing2)
+	{
+		return "s2";
+	}
+	if(starset[i]==starthing3)
+	{
+		return "s3";
+	}
+	if (starset[i]==starthing4)
+	{
+		return "s4";
+	}
+	if (starset[i]==starthing5)
+	{
+		return "s5";
+	}
+       }
+return 0;
+}
+
+
+function fillStars(starnum,lrid)
+{
+	var starinsert1="star1" + lrid;
+	var starinsert2="star2" + lrid;
+	var starinsert3="star3" + lrid;
+	var starinsert4="star4" + lrid;
+	var starinsert5="star5" + lrid;
+switch(starnum){
+	case 's5':
+	window.document.getElementById(starinsert1).src="filledstar.png";
+	window.document.getElementById(starinsert2).src="filledstar.png";
+	window.document.getElementById(starinsert3).src="filledstar.png";
+	window.document.getElementById(starinsert4).src="filledstar.png";
+	window.document.getElementById(starinsert5).src="filledstar.png";
+	break;
+	case 's4':
+	window.document.getElementById(starinsert1).src="filledstar.png";
+	window.document.getElementById(starinsert2).src="filledstar.png";
+	window.document.getElementById(starinsert3).src="filledstar.png";
+	window.document.getElementById(starinsert4).src="filledstar.png";
+	break;
+	case 's3':
+	window.document.getElementById(starinsert1).src="filledstar.png";
+	window.document.getElementById(starinsert2).src="filledstar.png";
+	window.document.getElementById(starinsert3).src="filledstar.png";
+	break;
+	case 's2':
+	window.document.getElementById(starinsert1).src="filledstar.png";
+	window.document.getElementById(starinsert2).src="filledstar.png";
+	break;
+	default:	
+	window.document.getElementById(starinsert1).src="filledstar.png";
+	}
+}
+
+function clearStars(starnum, lrid)
+{
+	var starinsert1="star1" + lrid;
+	var starinsert2="star2" + lrid;
+	var starinsert3="star3" + lrid;
+	var starinsert4="star4" + lrid;
+	var starinsert5="star5" + lrid;
+	window.document.getElementById(starinsert1).src="blankstar.png";
+	window.document.getElementById(starinsert2).src="blankstar.png";
+	window.document.getElementById(starinsert3).src="blankstar.png";
+	window.document.getElementById(starinsert4).src="blankstar.png";
+	window.document.getElementById(starinsert5).src="blankstar.png";
+var starisset = isStarset(lrid);
+if(starisset)
+	{
+	fillStars(starisset, lrid);
+	}
+}
+
+function prepInfo(starnum,lrid,unum)
+{
+strtoreturn= "usernum=" + unum + "&lrid=" + lrid + "&rating=" + starnum;
+return strtoreturn;
+}
+
+function resetStars(lrid)
+{
+var starisset = isStarset(lrid);
+if(starisset)
+	{
+	var starthing = starisset + lrid;
+	var starsetlength=starset.length;
+	for(i=0;i<starsetlength;i++)
+		{
+		if(starthing==starset[i])
+			starset[i]=0;
+		}
+	}
+}
+
+function starClick(starnum,lrid,unum)
+{
+resetStars(lrid);
+settler = starnum + lrid;
+starset.push(settler);
+clearStars(starnum,lrid);
+var rating=starnum.slice(1);
+var whatever="usernum=" + unum + "&lrid=" + lrid + "&rating=" + rating;
+insertRating(whatever);
+}
+
+function insertRating(preppedinfo)
+{
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.open("GET","lrrateinsert.php?"+preppedinfo,true);
+xmlhttp.send();
+
+xmlhttp.onreadystatechange=function()
+  {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+    document.getElementById("confirm").innerHTML=xmlhttp.responseText;
+    }
+  }
+}
+
+
+
+
+</script>
+
+</head>
+<body>
+<div id="logo">
+<img class="logoimg" src="logo5.png"  alt="LitRater: An archive of short stories for e-devices"/>
+<img src="LogoWords1.png" />
+<div id="welcome2"> Welcome user2 </div>
+</div>
+
+<div id="navigationbar">
+<ul>
+<li><a class="menu" href="news.asp">News</a></li>
+<li><a class="menu" href="contact.asp">Contact</a></li>
+<li><a class="menu" href="about.asp">About</a></li>
+</ul>
+<br/>
+</div>
+
+<div id="leftsidebar">
+<form action="lrsearch.php" method="GET">
+<p>Search by Author
+
+</p>
+<p><input type="text" name="authorsearch" id="authorsearch"/>
+</p>
+<p>Search by Title
+</p>
+<p><input type="text" name="titlesearch" id="titlesearch"/>
+</p>
+<p>Search by Keyword
+</p>
+<p>
+<input type="text" name="keywordsearch" id="keywordsearch"/>
+</p>
+<p>
+<input type="submit" value="Submit"/>
+</p>
+</form>
+</div>
+
+<h1>My First Web Page</h1>
+<img src="blankstar.png" id="star1341" name="star1"
+	onmouseover= "fillStars('s1',341);"
+	onmouseout = "clearStars('s1',341);"
+	onclick = "starClick('s1',341,45);" 
+>
+<img src="blankstar.png" id="star2341" name="star2"
+	onmouseover= "fillStars('s2',341);"
+	onmouseout = "clearStars('s2',341);"
+	onclick = "starClick('s2',341,56);"
+>
+<img src="blankstar.png" id="star3341" name="star3" 
+	onmouseover= "fillStars('s3',341);"
+	onmouseout = "clearStars('s3',341);"
+	onclick = "starClick('s3',341,67);"
+>
+<img src="blankstar.png" id="star4341" name="star4" 
+	onmouseover= "fillStars('s4',341);"
+	onmouseout = "clearStars('s4',341);"
+	onclick = "starClick('s4',341,78);"
+>
+<img src="blankstar.png" id="star5341" name="star5" 
+	onmouseover= "fillStars('s5',341);"
+	onmouseout = "clearStars('s5',341);"
+	onclick = "starClick('s5',341,89);"
+>
+
+<p>Confirmation of sending: <span id="confirm"></span></p>
+
+
+	<img src="blankstar.png" id="star165" name="star1"
+		onmouseover= "fillStars('s1',65);"
+		onmouseout = "clearStars('s1',65);"
+		onclick = "starClick('s1',65,45);" 
+		>
+	<img src="blankstar.png" id="star265" name="star2"
+		onmouseover= "fillStars('s2',65);"
+		onmouseout = "clearStars('s2',65);"
+		onclick = "starClick('s2',65,56);"
+		>
+	<img src="blankstar.png" id="star365" name="star3" 
+		onmouseover= "fillStars('s3',65);"
+		onmouseout = "clearStars('s3',65);"
+		onclick = "starClick('s3',65,67);"
+		>
+	<img src="blankstar.png" id="star465" name="star4" 
+		onmouseover= "fillStars('s4',65);"
+		onmouseout = "clearStars('s4',65);"
+		onclick = "starClick('s4',65,78);"
+		>
+	<img src="blankstar.png" id="star565" name="star5" 
+		onmouseover= "fillStars('s5',65);"
+		onmouseout = "clearStars('s5',65);"
+		onclick = "starClick('s5',65,89);"
+		>
+
+
+
+</body>
+</html>
